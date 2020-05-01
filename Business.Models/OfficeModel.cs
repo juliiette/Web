@@ -1,4 +1,4 @@
-namespace Models
+namespace Business.Models
 {
     public class OfficeModel
     {

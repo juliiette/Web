@@ -1,11 +1,9 @@
 using System;
 
-namespace Models
+namespace Data.Entities
 {
-    public class EmployeeModel
+    public class EmployeeEntity : BaseEntity
     {
-        public int Id { get; set; }
-        
         public string Name { get; set; }
 
         public DateTime DateOfBirth { get; set; }
@@ -16,7 +14,6 @@ namespace Models
         
         public int FirmId { get; set; }
         
-        public FirmModel Firm { get; set; }
-
+        public FirmEntity Firm { get; set; }
     }
 }
