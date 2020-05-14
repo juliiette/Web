@@ -5,12 +5,12 @@ namespace Data.Abstract
 {
     public interface IUnitOfWork
     {
-        IRepository<EmployeeEntity> EmployeeRepository { get; }
+        IGenericRepository<EmployeeEntity> EmployeeRepository { get; }
 
-        IRepository<FirmEntity> FirmRepository { get; }
+        IGenericRepository<FirmEntity> FirmRepository { get; }
 
-        IRepository<OfficeEntity> OfficeRepository { get; }
+        IGenericRepository<OfficeEntity> OfficeRepository { get; }
         
-        Task<int> Save();
+        void Save();
     }
 }

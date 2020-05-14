@@ -7,14 +7,12 @@
     <ItemGroup>
       <ProjectReference Include="..\Business.Abstract\Business.Abstract.csproj" />
       <ProjectReference Include="..\Business.Models\Business.Models.csproj" />
+      <ProjectReference Include="..\Data.Abstract\Data.Abstract.csproj" />
+      <ProjectReference Include="..\Data.Entities\Data.Entities.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <PackageReference Include="AutoMapper" Version="9.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Automapper" />
     </ItemGroup>
 
 </Project>

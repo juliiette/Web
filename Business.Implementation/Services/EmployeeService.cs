@@ -1,47 +1,103 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Business.Models;
 using Business.Abstract;
+using Data.Abstract;
 using AutoMapper;
+using Data.Entities;
 
 namespace Business.Implementation.Services
 {
     public class EmployeeService : IEmployeeService
     {
+        private readonly IMapper _mapper;
+
+        private readonly IUnitOfWork _unit;
+
+        public EmployeeService(IMapper mapper, IUnitOfWork unit)
+        {
+            _mapper = mapper;
+            _unit = unit;
+        }
+
         public IEnumerable<EmployeeModel> GetAll()
         {
-            throw new NotImplementedException();
+            var employees = _unit.EmployeeRepository.GetAll();
+
+            return _mapper.Map<IEnumerable<EmployeeModel>>(employees);
         }
 
         public IEnumerable<EmployeeModel> FindByName(string name)
         {
-            throw new NotImplementedException();
+            var employeesNames = _unit.EmployeeRepository.GetAll().Where(e => e.Name.Equals(name));
+
+            return _mapper.Map<IEnumerable<EmployeeModel>>(employeesNames);
         }
 
         public IEnumerable<EmployeeModel> FindByDateOfBirth(DateTime dateOfBirth)
         {
-            throw new NotImplementedException();
+            var employeesDOB = _unit.EmployeeRepository.GetAll().Where(e => e.DateOfBirth.Equals(dateOfBirth));
+            
+            return _mapper.Map<IEnumerable<EmployeeModel>>(employeesDOB);
+
         }
 
         public IEnumerable<EmployeeModel> FindByDetachment(string detachment)
         {
-            throw new NotImplementedException();
+            var employeesDetachment = _unit.EmployeeRepository.GetAll().Where(e => e.Detachment.Equals(detachment));
+
+            return _mapper.Map<IEnumerable<EmployeeModel>>(employeesDetachment);
         }
 
         public IEnumerable<EmployeeModel> FindByEmploymentDate(DateTime dateOfEmployment)
         {
-            throw new NotImplementedException();
+            var employeesRecruitDate =
+                _unit.EmployeeRepository.GetAll().Where(e => e.DateOfEmployment.Equals(dateOfEmployment));
+
+            return _mapper.Map<IEnumerable<EmployeeModel>>(employeesRecruitDate);
         }
 
-        public Task Recruit(EmployeeModel employee, FirmModel firm, DateTime date, string detachment)
+        public void Recruit(EmployeeModel employee, FirmModel firm, string detachment)
         {
-            throw new NotImplementedException();
+            employee.Firm = firm;
+            employee.DateOfEmployment = DateTime.Now;
+            employee.Detachment = detachment;
+
+            var employeeEntity = _mapper.Map<EmployeeEntity>(employee);
+            
+            _unit.EmployeeRepository.Update(employeeEntity);
+            _unit.Save();
         }
 
-        public Task CheckEmployeeAttachment(EmployeeModel employee, FirmModel firm)
+        public bool CheckEmployeeAttachment(EmployeeModel employee, FirmModel firm)
         {
-            throw new NotImplementedException();
+            bool attachment = false;
+            var firmEntity = _mapper.Map<FirmEntity>(firm);
+            var employeeEntity = _mapper.Map<EmployeeEntity>(employee);
+            
+            if (employeeEntity.Firm == firmEntity)
+            {
+                attachment = true;
+            }
+
+            return attachment;
         }
+
+        public void Create(EmployeeModel employeeModel)
+        {
+            var employeeEntity = _mapper.Map<EmployeeEntity>(employeeModel);
+            
+            _unit.EmployeeRepository.Create(employeeEntity);
+            _unit.Save();
+        }
+
+        public void Delete(int id)
+        {
+            _unit.EmployeeRepository.Delete(id);
+            _unit.Save();
+        }
+        
     }
 }

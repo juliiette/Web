@@ -17,8 +17,13 @@ namespace Business.Abstract
 
         IEnumerable<EmployeeModel> FindByEmploymentDate(DateTime dateOfEmployment);
 
-        Task Recruit(EmployeeModel employee, FirmModel firm, DateTime date, string detachment);
+        void Recruit(EmployeeModel employee, FirmModel firm, string detachment);
 
-        Task CheckEmployeeAttachment(EmployeeModel employee, FirmModel firm);
+        bool CheckEmployeeAttachment(EmployeeModel employee, FirmModel firm);
+
+        void Create(EmployeeModel employeeModel);
+
+        void Delete(int id);
+
     }
 }

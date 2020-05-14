@@ -15,6 +15,6 @@ namespace Business.Abstract
         
         IEnumerable<FirmModel> FindByEmployeesQuantity(int quantityOfEmployees);
 
-        Task AddDetachment(string detachment);
+        void AddDetachment(string detachment, FirmModel firm);
     }
 }
