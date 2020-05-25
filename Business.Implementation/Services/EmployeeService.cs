@@ -21,6 +21,7 @@ namespace Business.Implementation.Services
             _mapper = mapper;
             _unit = unit;
         }
+        
 
         public IEnumerable<EmployeeModel> GetAll()
         {
@@ -29,12 +30,14 @@ namespace Business.Implementation.Services
             return _mapper.Map<IEnumerable<EmployeeModel>>(employees);
         }
 
+        
         public IEnumerable<EmployeeModel> FindByName(string name)
         {
             var employeesNames = _unit.EmployeeRepository.GetAll().Where(e => e.Name.Equals(name));
 
             return _mapper.Map<IEnumerable<EmployeeModel>>(employeesNames);
         }
+        
 
         public IEnumerable<EmployeeModel> FindByDateOfBirth(DateTime dateOfBirth)
         {
@@ -44,6 +47,7 @@ namespace Business.Implementation.Services
 
         }
 
+        
         public IEnumerable<EmployeeModel> FindByDetachment(string detachment)
         {
             var employeesDetachment = _unit.EmployeeRepository.GetAll().Where(e => e.Detachment.Equals(detachment));
@@ -51,6 +55,7 @@ namespace Business.Implementation.Services
             return _mapper.Map<IEnumerable<EmployeeModel>>(employeesDetachment);
         }
 
+        
         public IEnumerable<EmployeeModel> FindByEmploymentDate(DateTime dateOfEmployment)
         {
             var employeesRecruitDate =
@@ -59,6 +64,7 @@ namespace Business.Implementation.Services
             return _mapper.Map<IEnumerable<EmployeeModel>>(employeesRecruitDate);
         }
 
+        
         public void Recruit(EmployeeModel employee, FirmModel firm, string detachment)
         {
             employee.Firm = firm;
@@ -71,6 +77,7 @@ namespace Business.Implementation.Services
             _unit.Save();
         }
 
+        
         public bool CheckEmployeeAttachment(EmployeeModel employee, FirmModel firm)
         {
             bool attachment = false;
@@ -93,9 +100,11 @@ namespace Business.Implementation.Services
             _unit.Save();
         }
 
-        public void Delete(int id)
+        public void Delete(EmployeeModel employeeModel)
         {
-            _unit.EmployeeRepository.Delete(id);
+            var employeeEntity = _mapper.Map<EmployeeEntity>(employeeModel);
+            
+            _unit.EmployeeRepository.Delete(employeeEntity);
             _unit.Save();
         }
         

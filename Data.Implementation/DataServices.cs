@@ -1,18 +1,21 @@
 using Data.Abstract;
-using Data.Entities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Data.Implementation
 {
     public static class DataServices
     {
-        public static void ConfigureServices(IServiceCollection services)
+        public static IServiceCollection ConfigureServices(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<OfficeContext>();
+            services.AddDbContext<OfficeContext>(options =>
+                options.UseSqlServer(connectionString));
             
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            return services;
         }
     }
 }

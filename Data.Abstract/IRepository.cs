@@ -4,7 +4,7 @@ using Data.Entities;
 
 namespace Data.Abstract
 {
-    public interface IGenericRepository<TEntity> : IDisposable
+    public interface IRepository<TEntity> : IDisposable
         where TEntity : class
     {
         IEnumerable<TEntity> GetAll();
@@ -15,6 +15,6 @@ namespace Data.Abstract
         
         void Update(TEntity entity);
 
-        void Delete(int id);
+        void Delete(TEntity entity);
     }
 }

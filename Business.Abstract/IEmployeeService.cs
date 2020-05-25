@@ -23,7 +23,7 @@ namespace Business.Abstract
 
         void Create(EmployeeModel employeeModel);
 
-        void Delete(int id);
+        void Delete(EmployeeModel employeeModel);
 
     }
 }

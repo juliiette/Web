@@ -7,16 +7,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Data.Implementation
 {
-    public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         private readonly OfficeContext _context;
-
         private  DbSet<TEntity> _dbSet;
 
-        public GenericRepository(OfficeContext context)
+        public Repository(OfficeContext context)
         {
             _context = context;
-
             _dbSet = context.Set<TEntity>();
 
         }
@@ -44,9 +42,8 @@ namespace Data.Implementation
             _context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(TEntity item)
         {
-            TEntity item = GetById(id);
             if (item != null)
             {
                 _dbSet.Remove(item);

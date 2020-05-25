@@ -8,17 +8,17 @@ namespace Data.Implementation
     {
         private readonly OfficeContext _context;
         
-        public IGenericRepository<OfficeEntity> OfficeRepository { get; }
+        public IRepository<OfficeEntity> OfficeRepository { get; }
         
-        public IGenericRepository<FirmEntity> FirmRepository { get; }
+        public IRepository<FirmEntity> FirmRepository { get; }
         
-        public IGenericRepository<EmployeeEntity> EmployeeRepository { get; }
+        public IRepository<EmployeeEntity> EmployeeRepository { get; }
 
         
         
-        public UnitOfWork(IGenericRepository<OfficeEntity> officeRepository,
-            IGenericRepository<FirmEntity> firmRepository,
-            IGenericRepository<EmployeeEntity> employeeRepository, OfficeContext context)
+        public UnitOfWork(IRepository<OfficeEntity> officeRepository,
+            IRepository<FirmEntity> firmRepository,
+            IRepository<EmployeeEntity> employeeRepository, OfficeContext context)
         {
             OfficeRepository = officeRepository;
 

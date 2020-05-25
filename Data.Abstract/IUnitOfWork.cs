@@ -5,11 +5,11 @@ namespace Data.Abstract
 {
     public interface IUnitOfWork
     {
-        IGenericRepository<EmployeeEntity> EmployeeRepository { get; }
+        IRepository<EmployeeEntity> EmployeeRepository { get; }
 
-        IGenericRepository<FirmEntity> FirmRepository { get; }
+        IRepository<FirmEntity> FirmRepository { get; }
 
-        IGenericRepository<OfficeEntity> OfficeRepository { get; }
+        IRepository<OfficeEntity> OfficeRepository { get; }
         
         void Save();
     }
