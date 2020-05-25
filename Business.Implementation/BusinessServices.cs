@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Implementation.Automapper;
 using Business.Implementation.Services;
+using Data.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Business.Implementation
 {
@@ -12,6 +14,7 @@ namespace Business.Implementation
         {
             services.AddTransient<IEmployeeService, EmployeeService>();
             services.AddTransient<IFirmService, FirmService>();
+            services.AddTransient<IUserService, UserService>();
 
             var mapperConfig = new MapperConfiguration(c => c.AddProfile(new MyAutomapper()));
 

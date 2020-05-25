@@ -1,6 +1,7 @@
 ﻿using System;
 using Data.Abstract;
 using Data.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Data.Implementation
 {
@@ -13,12 +14,15 @@ namespace Data.Implementation
         public IRepository<FirmEntity> FirmRepository { get; }
         
         public IRepository<EmployeeEntity> EmployeeRepository { get; }
+        
+        public UserManager<User> UserManager { get; }
+        
+        public SignInManager<User> SignInManager { get; }
 
-        
-        
         public UnitOfWork(IRepository<OfficeEntity> officeRepository,
             IRepository<FirmEntity> firmRepository,
-            IRepository<EmployeeEntity> employeeRepository, OfficeContext context)
+            IRepository<EmployeeEntity> employeeRepository, OfficeContext context,
+            UserManager<User> userManager, SignInManager<User> signInManager)
         {
             OfficeRepository = officeRepository;
 
@@ -27,6 +31,10 @@ namespace Data.Implementation
             EmployeeRepository = employeeRepository;
 
             _context = context;
+            
+            UserManager = userManager;
+            
+            SignInManager = signInManager;
         }
 
 

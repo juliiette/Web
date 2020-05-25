@@ -19,6 +19,6 @@ namespace Business.Models
 
         public ICollection<OfficeModel> Offices { get; set; }
 
-        public ICollection<string> Detachments { get; set; }
+        public List<string> Detachments { get; set; }
     }
 }

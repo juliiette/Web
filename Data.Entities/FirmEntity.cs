@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Data.Entities
 {
@@ -17,6 +18,7 @@ namespace Data.Entities
 
         public ICollection<OfficeEntity> Offices { get; set; }
 
-        public ICollection<string> Detachments { get; set; }
+        [NotMapped]
+        public IEnumerable<string> Detachments { get; set; }
     }
 }

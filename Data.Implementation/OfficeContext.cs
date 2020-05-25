@@ -2,10 +2,11 @@ using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Data.Implementation
 {
-    public class OfficeContext : DbContext
+    public class OfficeContext : IdentityDbContext<User>
     {
         public OfficeContext(DbContextOptions<OfficeContext> options) : base(options)
         {
@@ -22,10 +23,7 @@ namespace Data.Implementation
         protected override void OnModelCreating(ModelBuilder model)
         {
             base.OnModelCreating(model);
-
-            #region Data
             
-            model.Entity<EmployeeEntity>().ToTable("Employees");
             model.Entity<EmployeeEntity>().HasData(
 
                 new EmployeeEntity
@@ -35,8 +33,7 @@ namespace Data.Implementation
                     DateOfBirth = new DateTime(1998, 09, 22),
                     Detachment = "Сисадминное царство",
                     DateOfEmployment = new DateTime(2020, 03, 08),
-                    FirmId = 1,
-                    Firm = Firms.Find(1)
+                    FirmId = 1
                 },
                 new EmployeeEntity
                 {
@@ -45,8 +42,7 @@ namespace Data.Implementation
                     DateOfBirth = new DateTime(1999, 10, 2),
                     Detachment = "Бухгалтерия",
                     DateOfEmployment = new DateTime(2020, 04, 08),
-                    FirmId = 2,
-                    Firm = Firms.Find(2)
+                    FirmId = 2
                 },
                 new EmployeeEntity
                 {
@@ -55,12 +51,10 @@ namespace Data.Implementation
                     DateOfBirth = new DateTime(1997, 3, 3),
                     Detachment = "Сисадминное царство",
                     DateOfEmployment = new DateTime(2020, 03, 08),
-                    FirmId = 1,
-                    Firm = Firms.Find(1)
+                    FirmId = 1
                 }
             );
 
-            model.Entity<FirmEntity>().ToTable("Firms");
             model.Entity<FirmEntity>().HasData(
                 new FirmEntity
                 {
@@ -81,16 +75,13 @@ namespace Data.Implementation
                     Detachments = new List<string>() {"Бухгалтерия"}
                 });
 
-            model.Entity<OfficeEntity>().ToTable("Offices");
             model.Entity<OfficeEntity>().HasData(
                 new OfficeEntity
                 {
                     Id = 1,
                     Name = "Ну шо за офис",
-                    FirmId = 1,
-                    Firm = Firms.Find(1)
+                    FirmId = 1
                 });
-            #endregion
         }
     }
 }
