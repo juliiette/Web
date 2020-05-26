@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data.Implementation", "Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office.MVC", "Office.MVC\Office.MVC.csproj", "{7088E92D-23D9-4925-9358-E6F7FF30228C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office.API", "..\..\chuzhoe\Vlad-15\Office.API\Office.API.csproj", "{73CFE9CE-ED1D-48D7-87C4-8C87B720532B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Office.API", "Office.API\Office.API.csproj", "{8FFEB026-A190-4442-8993-9BC11323DE4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,9 +51,9 @@ Global
 		{7088E92D-23D9-4925-9358-E6F7FF30228C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7088E92D-23D9-4925-9358-E6F7FF30228C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7088E92D-23D9-4925-9358-E6F7FF30228C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{73CFE9CE-ED1D-48D7-87C4-8C87B720532B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73CFE9CE-ED1D-48D7-87C4-8C87B720532B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{73CFE9CE-ED1D-48D7-87C4-8C87B720532B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{73CFE9CE-ED1D-48D7-87C4-8C87B720532B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FFEB026-A190-4442-8993-9BC11323DE4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FFEB026-A190-4442-8993-9BC11323DE4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FFEB026-A190-4442-8993-9BC11323DE4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FFEB026-A190-4442-8993-9BC11323DE4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
