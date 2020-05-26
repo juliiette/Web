@@ -47,7 +47,6 @@ namespace Business.Implementation.Services
 
         }
 
-        
         public IEnumerable<EmployeeModel> FindByDetachment(string detachment)
         {
             var employeesDetachment = _unit.EmployeeRepository.GetAll().Where(e => e.Detachment.Equals(detachment));

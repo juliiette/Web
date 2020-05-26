@@ -11,7 +11,7 @@ namespace Data.Implementation
         public static IServiceCollection ConfigureServices(this IServiceCollection services, string connectionString)
         {
             services.AddDbContext<OfficeContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseMySql(connectionString));
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 

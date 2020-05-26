@@ -13,6 +13,9 @@ namespace Business.Implementation.Automapper
             CreateMap<FirmEntity, FirmModel>().ReverseMap();
 
             CreateMap<EmployeeEntity, EmployeeModel>().ReverseMap();
+
+            CreateMap<UserRegistrationModel, User>().ForMember(u => u.UserName, 
+                opt => opt.MapFrom(x => x.Email));
         }
     }
 }
